@@ -9,6 +9,14 @@ export async function usernameValidate(values){
     return errors;
 } 
 
+/** validate passowrd */
+export async function passwordValidate(values){
+    const errors = passwordVerify({}, values);
+
+    return errors;
+}
+
+
 /**validate password */
 function passwordVerify(errors = {}, values){
    
@@ -18,9 +26,9 @@ function passwordVerify(errors = {}, values){
     if(!values.password){
     errors.password = toast.error("Password Required...!");
    } else if(values.password.includes(" ")){
-    errors.password = toast.error("Invalid Password...!");
+    errors.password = toast.error("Wrong Password...!");
    } else if(values.password.length < 4){
-    errors.password = toast.error("Password must be atleast 5 character long");
+    errors.password = toast.error("Password must be atleast 4 character long");
    }else if(!specialChars.test(values.password)){
     errors.password = toast.error("Password must have special character");
 }
